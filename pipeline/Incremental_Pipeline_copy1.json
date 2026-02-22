@@ -9,7 +9,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('update_cdc').output",
+						"value": "@pipeline().parameters.loop_intput",
 						"type": "Expression"
 					},
 					"activities": [
