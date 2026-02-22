@@ -148,7 +148,7 @@
 					},
 					"ifFalseActivities": [
 						{
-							"name": "Delete1",
+							"name": "DeleteEmptyFile",
 							"type": "Delete",
 							"dependsOn": [],
 							"policy": {
