@@ -1,0 +1,9 @@
+{
+	"name": "adepractice02",
+	"location": "canadacentral",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "6ada2375-d56e-48d7-aa61-8a3b11b2c1dd",
+		"tenantId": "96e4955f-0a93-4520-9a15-1f2b9dca1fba"
+	}
+}
