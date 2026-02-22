@@ -30,12 +30,45 @@
 						"referenceName": "Json_dynapmic",
 						"type": "DatasetReference",
 						"parameters": {
-							"folder": "medallion\\bronze",
+							"folder": "cdc",
 							"file": "cdc.json",
-							"container": "cdc"
+							"container": "medallion\\bronze"
 						}
 					}
 				}
+			},
+			{
+				"name": "AzureSQLToADLS",
+				"type": "Copy",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": {
+							"value": "Select * from @{pipeline().parameters.schema}.@{pipeline().parameters.Table} where @{pipeline().parameters.cdc_col} >",
+							"type": "Expression"
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "AzureSqlTable1",
+						"type": "DatasetReference"
+					}
+				]
 			}
 		],
 		"parameters": {
