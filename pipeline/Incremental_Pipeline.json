@@ -49,13 +49,24 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "AzureSqlSource",
-						"queryTimeout": "02:00:00",
-						"partitionOption": "None"
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
 					},
 					"dataset": {
-						"referenceName": "AzureSqlTable1",
-						"type": "DatasetReference"
+						"referenceName": "Json_dynapmic",
+						"type": "DatasetReference",
+						"parameters": {
+							"folder": "bronze",
+							"file": "cdc.json",
+							"container": "cdc"
+						}
 					}
 				}
 			}
